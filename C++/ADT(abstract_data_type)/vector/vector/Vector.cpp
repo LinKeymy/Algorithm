@@ -130,6 +130,7 @@ public:
     
     void push_back(Element && e) {
         if (m_size == m_capacity) {
+            // +1 为了处理大小为0的情况
             reserve(2 * m_capacity + 1);
         }
         // 是直接move 因为 e 是右值，销毁浪费
