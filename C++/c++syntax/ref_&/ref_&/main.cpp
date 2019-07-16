@@ -43,7 +43,7 @@ public:
         name = new string(system.name->c_str());
     }
     
-    // assign operator
+    // copy assign
     System& operator= (const System& rsystem) {
         cout << "assign from " << *(rsystem.name) << endl;
         System tmp(rsystem.name->c_str());
@@ -53,7 +53,7 @@ public:
         return *this; // 取的this指向的变量，返回给外部引用
     }
     
-    // move assign operator
+    // move assign
     System& operator= (System&& rsystem) {
         cout << "System& operator= (System&& rsystem)" << endl;
         this->name = rsystem.name; // 使用了rsystem的name，无需深拷贝
@@ -63,7 +63,7 @@ public:
         return *this; // 取的this指向的变量，返回给外部引用
     }
         
-        // move assign operator
+        // move constructor
         System(System&& rsystem) {
         cout << "System(System&& rsystem" << endl;
         this->name = rsystem.name; // 使用了rsystem的name，无需深拷贝
@@ -108,6 +108,7 @@ void rvalue() {
         
 
 void printMoveConstructor( System &&rhs) {
+    System s = System(rhs);
         string *b = std::move(rhs.name);
    cout << "printMoveConstructor: " << b->c_str() << endl;
 }
@@ -174,14 +175,23 @@ public:
 
 };
 
-int main() {
-    MyString a;
-    a = MyString("Hello");
-    std::vector<MyString> vec;
-    vec.push_back(MyString("World"));
-}
-//
-//int main(int argc, const char * argv[]) {
-//        printMoveConstructor(System("hhh"));
-//    return 0;
+//int main() {
+//    MyString a;
+//    a = MyString("Hello");
+//    std::vector<MyString> vec;
+//    vec.push_back(MyString("World"));
 //}
+//
+int main(int argc, const char * argv[]) {
+    
+//    printMoveConstructor(System("hhh"));
+    System sss("d");
+    System d = System("d");   // constructor
+    System s = System("s");   // constructor
+    s = d; // copy assign
+    System n = d; // copy constructor
+    System t = std::move(d);  // move constructor
+    s = System("ss"); // move assign
+    s = std::move(d); // move assgn
+    return 0;
+}
