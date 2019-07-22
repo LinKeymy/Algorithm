@@ -9,7 +9,23 @@
 #include <iostream>
 using namespace std;
 
-class Foo {
+
+class Door {
+    public:
+    
+    int m_part;
+    virtual void display_part() {
+        cout << "display_part " << m_part << endl;
+    }
+    
+    string *city;
+    Door() {
+        cout << __func__  << "  默认构造器被调用" << endl;
+    }
+};
+
+
+class Foo: public  Door {
 public:
     int val;
     Foo *pnext;
@@ -23,14 +39,15 @@ public:
     
 };
 
-class Bar {
+class Bar: Foo {
 public:
+    Door door;
     Foo foo;
     char *name;
-    Bar() {
-        static char n[] = "static_unixlin";
-        name = n;
-    }
+//    Bar() {
+//        static char n[] = "static_unixlin";
+//        name = n;
+//    }
 };
 
 void foo_bar() {
@@ -41,6 +58,10 @@ void foo_bar() {
 }
 
 int main(int argc, const char * argv[]) {
-    foo_bar();
+//    foo_bar();
+    Door door1;
+    Door door2;
+    door1.display_part();
+    door2.display_part();
     return 0;
 }
