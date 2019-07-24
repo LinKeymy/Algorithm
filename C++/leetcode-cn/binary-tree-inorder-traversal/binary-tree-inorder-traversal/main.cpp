@@ -8,6 +8,7 @@
 
 #include "BinarySearchTree.hpp"
 #include <vector>
+#include <queue>
 
 using namespace std;
 class BinarySearchTree_Inoder: public BinarySearchTree<int> {
@@ -52,33 +53,7 @@ class BinarySearchTree_Inoder: public BinarySearchTree<int> {
         }
         return v;
     }
-    
-    /*
-     vector<int> postorderTraversal(TreeNode * t) {
-     vector<int> v;
-     stack<TreeNode *> st;
-     TreeNode * last_t = nullptr;
-     if (t != nullptr) st.push(t);
-     while (!st.empty()) {
-     t = st.top();
-     if ((t->left == nullptr && t->right == nullptr) || t->left == last_t || t->right == last_t) {
-     v.push_back(t->val);
-     last_t = t;
-     st.pop();
-     continue;
-     } else {
-     if (t->right != nullptr) {
-     st.push(t->right);
-     }
-     if (t->left != nullptr) {
-     st.push(t->left);
-     }
-     }
-     
-     }
-     return v;
-     }
-     */
+
     vector<int> postorderTraversal(BinaryNode<int> * t) {
         vector<int> v;
         stack<BinaryNode<int> *> st;
@@ -100,6 +75,30 @@ class BinarySearchTree_Inoder: public BinarySearchTree<int> {
                 }
             }
   
+        }
+        return v;
+    }
+    
+    vector<vector<int>> levelorderTraversal(BinaryNode<int> * t) {
+        vector<vector<int>> v;
+        vector<int> subV;
+        subV.reserve(1);
+        queue<BinaryNode<int> *> st;
+        if (t != nullptr) {
+            st.push(t);
+        }
+       
+        while (!st.empty()) {
+            t = st.front();
+            subV.push_back(t->m_element);
+            st.pop();
+            if (t->left != nullptr) { st.push(t->left); };
+            if (t->right != nullptr) { st.push(t->right); };
+            if (subV.size() == subV.capacity()) {
+                v.push_back(subV);
+                subV = vector<int>();
+                subV.reserve(st.size());
+            };
         }
         return v;
     }
@@ -154,7 +153,25 @@ public:
             ++it;
         }
     }
-    
+
+    void levelorderTraversal() {
+        vector<vector<int>> v = levelorderTraversal(root);
+        auto it = v.begin();
+        auto end = v.end();
+        cout << "[ ";
+        while (it != end) {
+            cout << " [ ";
+            auto vit = (*it).begin();
+            auto vend = (*it).end();
+            while (vit != vend) {
+                cout << *vit << " ";
+                ++vit;
+            }
+            cout << " ],";
+            ++it;
+        }
+        cout << " ]";
+    }
 };
 
 
@@ -171,7 +188,7 @@ int main(int argc, const char * argv[]) {
     bst.insert(11);
     bst.insert(10);
     bst.insert(12);
-    bst.postorderTraversal();
+    bst.levelorderTraversal();
 
     return 0;
 }
