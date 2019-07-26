@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -16,11 +17,15 @@ class BinaryHeap {
     
     
 public:
-    explicit BinaryHeap(int capacity = 100) {
+    explicit BinaryHeap(int capacity = 100):array(capacity) {
         
     }
-    explicit BinaryHeap(const vector<Comparable> & items) {
-        
+    // 先将元素都拷贝至array，然后处理堆序性质
+    explicit BinaryHeap(const vector<Comparable> & items): array(items.size() + 10),currentSize((int)items.size()) {
+        for (int i = 0; i < currentSize; ++i) {
+            array[i + 1] = items[i];
+        }
+        buildHeap();
     }
     
     bool isEmpty() {
@@ -85,7 +90,20 @@ public:
     }
     
     void clear() {
-        
+        currentSize = 0;
+    }
+    
+    void printHeap() {
+        cout << "[ ";
+        for (int i = 1; i <= currentSize; i *= 2) {
+            cout << "[ ";
+            for (int j = i; j < i * 2 ; ++j) {
+                if (j > currentSize ) break;
+                cout << array[j] << " ";
+            }
+            cout << " ]";
+        }
+        cout << " ]" << endl;
     }
     
 
@@ -94,8 +112,10 @@ private:
     vector<Comparable> array;
     
     void buildHeap() {
-        
-        
+        // int i = currentSize / 2 为倒数第二层的最后一个节点，右->左 ， 下->上进行percolate down
+        for (int i = currentSize / 2; i > 0; --i) {
+            percolateDown(i);
+        }
     }
     void percolateDown(int hole) {
         int child;
@@ -116,4 +136,6 @@ private:
         }
         array[hole] = move(tmp);
     }
+    
+    
 };
