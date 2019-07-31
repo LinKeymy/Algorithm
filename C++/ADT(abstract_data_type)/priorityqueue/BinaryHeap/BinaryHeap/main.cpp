@@ -10,9 +10,10 @@
 #include "BinaryHeap.cpp"
 
 int main(int argc, const char * argv[]) {
-    BinaryHeap<int> heap;
+//    BinaryHeap<int> heap;
+     vector<int> v = {81,94,11,96,12,35,17,95,28,58,41,75,15};
 //    vector<int> items = {150,80,40,30,10,50,110,100,20,90,60,70,120,140,130};
-//    BinaryHeap<int> heap(items);
+    BinaryHeap<int> heap(v);
 //
 //    heap.printHeap();
 //    heap.deleteMin();
