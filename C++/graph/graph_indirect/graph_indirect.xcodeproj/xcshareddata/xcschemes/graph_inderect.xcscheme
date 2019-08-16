@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D643C5BF2303F5830050BB9F"
-               BuildableName = "graph_inderect"
-               BlueprintName = "graph_inderect"
-               ReferencedContainer = "container:graph_inderect.xcodeproj">
+               BuildableName = "graph_indirect"
+               BlueprintName = "graph_indirect"
+               ReferencedContainer = "container:graph_indirect.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D643C5BF2303F5830050BB9F"
-            BuildableName = "graph_inderect"
-            BlueprintName = "graph_inderect"
-            ReferencedContainer = "container:graph_inderect.xcodeproj">
+            BuildableName = "graph_indirect"
+            BlueprintName = "graph_indirect"
+            ReferencedContainer = "container:graph_indirect.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -47,7 +47,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/stevelin/GitHub/Algorithm/C++/graph/graph_inderect/graph_inderect"
+      customWorkingDirectory = "/Users/stevelin/GitHub/Algorithm/C++/graph/graph_indirect/graph_indirect"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D643C5BF2303F5830050BB9F"
-            BuildableName = "graph_inderect"
-            BlueprintName = "graph_inderect"
-            ReferencedContainer = "container:graph_inderect.xcodeproj">
+            BuildableName = "graph_indirect"
+            BlueprintName = "graph_indirect"
+            ReferencedContainer = "container:graph_indirect.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D643C5BF2303F5830050BB9F"
-            BuildableName = "graph_inderect"
-            BlueprintName = "graph_inderect"
-            ReferencedContainer = "container:graph_inderect.xcodeproj">
+            BuildableName = "graph_indirect"
+            BlueprintName = "graph_indirect"
+            ReferencedContainer = "container:graph_indirect.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

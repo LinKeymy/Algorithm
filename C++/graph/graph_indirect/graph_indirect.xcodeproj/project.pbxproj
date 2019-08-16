@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D643C5C42303F5830050BB9F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D643C5C32303F5830050BB9F /* main.cpp */; };
+		D68CD3FA23069BC800783035 /* DepthFirstPaths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D68CD3F923069BC800783035 /* DepthFirstPaths.cpp */; };
 		D69C8BE4230418AB000808D8 /* union-find.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D69C8BE3230418AB000808D8 /* union-find.cpp */; };
+		D69C8BF923065019000808D8 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D69C8BF823065019000808D8 /* Graph.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,10 +26,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D643C5C02303F5830050BB9F /* graph_inderect */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = graph_inderect; sourceTree = BUILT_PRODUCTS_DIR; };
+		D643C5C02303F5830050BB9F /* graph_indirect */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = graph_indirect; sourceTree = BUILT_PRODUCTS_DIR; };
 		D643C5C32303F5830050BB9F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D68CD3F923069BC800783035 /* DepthFirstPaths.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DepthFirstPaths.cpp; sourceTree = "<group>"; };
+		D68CD3FC2306B0EA00783035 /* unCycleG.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unCycleG.txt; sourceTree = "<group>"; };
+		D68CD3FD2306DBDC00783035 /* twoColor.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = twoColor.txt; sourceTree = "<group>"; };
 		D69C8BE223040C26000808D8 /* tinyG.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tinyG.txt; sourceTree = "<group>"; };
 		D69C8BE3230418AB000808D8 /* union-find.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "union-find.cpp"; sourceTree = "<group>"; };
+		D69C8BF823065019000808D8 /* Graph.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Graph.cpp; sourceTree = "<group>"; };
+		D69C8BFA230683DE000808D8 /* tinyCG.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tinyCG.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +51,7 @@
 		D643C5B72303F5830050BB9F = {
 			isa = PBXGroup;
 			children = (
-				D643C5C22303F5830050BB9F /* graph_inderect */,
+				D643C5C22303F5830050BB9F /* graph_indirect */,
 				D643C5C12303F5830050BB9F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,27 +59,32 @@
 		D643C5C12303F5830050BB9F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D643C5C02303F5830050BB9F /* graph_inderect */,
+				D643C5C02303F5830050BB9F /* graph_indirect */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D643C5C22303F5830050BB9F /* graph_inderect */ = {
+		D643C5C22303F5830050BB9F /* graph_indirect */ = {
 			isa = PBXGroup;
 			children = (
+				D68CD3FD2306DBDC00783035 /* twoColor.txt */,
+				D68CD3FC2306B0EA00783035 /* unCycleG.txt */,
 				D69C8BE223040C26000808D8 /* tinyG.txt */,
+				D69C8BFA230683DE000808D8 /* tinyCG.txt */,
 				D643C5C32303F5830050BB9F /* main.cpp */,
 				D69C8BE3230418AB000808D8 /* union-find.cpp */,
+				D69C8BF823065019000808D8 /* Graph.cpp */,
+				D68CD3F923069BC800783035 /* DepthFirstPaths.cpp */,
 			);
-			path = graph_inderect;
+			path = graph_indirect;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D643C5BF2303F5830050BB9F /* graph_inderect */ = {
+		D643C5BF2303F5830050BB9F /* graph_indirect */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D643C5C72303F5830050BB9F /* Build configuration list for PBXNativeTarget "graph_inderect" */;
+			buildConfigurationList = D643C5C72303F5830050BB9F /* Build configuration list for PBXNativeTarget "graph_indirect" */;
 			buildPhases = (
 				D643C5BC2303F5830050BB9F /* Sources */,
 				D643C5BD2303F5830050BB9F /* Frameworks */,
@@ -82,9 +94,9 @@
 			);
 			dependencies = (
 			);
-			name = graph_inderect;
+			name = graph_indirect;
 			productName = graph_inderect;
-			productReference = D643C5C02303F5830050BB9F /* graph_inderect */;
+			productReference = D643C5C02303F5830050BB9F /* graph_indirect */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -101,7 +113,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D643C5BB2303F5830050BB9F /* Build configuration list for PBXProject "graph_inderect" */;
+			buildConfigurationList = D643C5BB2303F5830050BB9F /* Build configuration list for PBXProject "graph_indirect" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -113,7 +125,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D643C5BF2303F5830050BB9F /* graph_inderect */,
+				D643C5BF2303F5830050BB9F /* graph_indirect */,
 			);
 		};
 /* End PBXProject section */
@@ -124,6 +136,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D69C8BE4230418AB000808D8 /* union-find.cpp in Sources */,
+				D68CD3FA23069BC800783035 /* DepthFirstPaths.cpp in Sources */,
+				D69C8BF923065019000808D8 /* Graph.cpp in Sources */,
 				D643C5C42303F5830050BB9F /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,7 +277,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D643C5BB2303F5830050BB9F /* Build configuration list for PBXProject "graph_inderect" */ = {
+		D643C5BB2303F5830050BB9F /* Build configuration list for PBXProject "graph_indirect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D643C5C52303F5830050BB9F /* Debug */,
@@ -272,7 +286,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D643C5C72303F5830050BB9F /* Build configuration list for PBXNativeTarget "graph_inderect" */ = {
+		D643C5C72303F5830050BB9F /* Build configuration list for PBXNativeTarget "graph_indirect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D643C5C82303F5830050BB9F /* Debug */,

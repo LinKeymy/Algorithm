@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:graph_inderect.xcodeproj">
+      location = "self:/Users/stevelin/GitHub/Algorithm/C++/graph/graph_inderect/graph_indirect.xcodeproj">
    </FileRef>
 </Workspace>
