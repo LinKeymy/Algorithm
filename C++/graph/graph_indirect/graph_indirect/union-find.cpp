@@ -94,7 +94,6 @@ private:
         }
         return p;
     }
-    
     /*
      将小的分量链接到大的分量中，若两个分量不相等，那么分量对于的树的高度不变
      树的高度降低，会大大降低 find 的成本，压缩路径对树高度增加的限制更显严格
@@ -107,5 +106,9 @@ private:
             id[q] = p;
             sz[p] += sz[q];
         }
+    }
+    
+    bool connected(int p, int q) {
+        return find(p) == find(q);
     }
 };

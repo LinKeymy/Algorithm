@@ -14,8 +14,6 @@
 using namespace std;
 
 
-
-
 class IndexMinPQ {
 private:
     vector<double> v;
@@ -218,16 +216,20 @@ public:
         return adj[v];
     }
     // 所有的边
-    list<Edge*> edges() {
+    list<Edge*> edges() const {
         list<Edge*> es;
         for (int v = 0; v < this->v(); ++v)
             for (Edge *e :adjacent(v))
+                // 假设 6-2 当 v == 2 时， other(2) == 6。 当 v == 6 时，other(6) == 2;
+                // 因此对于每一条边 for 访问到两次，但是满足 other(v) > v 只有一次。也就是每条边只添加一次
                 if (e->other(v) > v)
                     es.push_front(e);
         return es;
     }
     
     void print() const{
+        cout << endl;
+        cout << "EdgeWeightedGraph" << endl;
         cout << m_v << "   vertex, "  << m_e <<  "  edges  " << endl;
         for (int v = 0; v < m_v; ++v) {
             cout << v << ": ";
@@ -238,6 +240,7 @@ public:
             }
             cout << endl;
         }
+         cout << endl;
     }
 };
 
@@ -394,7 +397,7 @@ public:
     }
     
     void printMst() const {
-        cout << "mst:  " <<  endl;
+        cout << "Prim mst:  " <<  endl;
         cout <<"weight: " <<  this->weight() <<  endl;;
         cout << "egdes: ";
         vector<Edge> q = edges();
@@ -404,6 +407,101 @@ public:
         cout << endl;
     }
 };
+
+
+// 加权的quick-union
+class weightedQuickUnionUF {
+private:
+    vector<int> id;
+    vector<int> sz;
+public:
+    weightedQuickUnionUF(int n) {
+        m_count = n;
+        id = vector<int>(n);
+        for (int i = 0; i < id.size(); ++i) {
+            id[i] = i;
+        }
+        sz = vector<int>(n,1);
+    }
+    
+    int m_count;
+    
+    int find(int p) {
+        while (p != id[p]) {
+            p = id[p];
+        }
+        return p;
+    }
+    /*
+     将小的分量链接到大的分量中，若两个分量不相等，那么分量对于的树的高度不变
+     树的高度降低，会大大降低 find 的成本，压缩路径对树高度增加的限制更显严格
+     */
+    void quick_union(int p, int q) {
+        int i = find(p);
+        int j = find(q);
+        if (i == j) return;
+        if (sz[i] < sz[j]) {
+            id[i] = j;
+            sz[j] += sz[i];
+        } else {
+            id[j] = i;
+            sz[i] += sz[j];
+        }
+    }
+    
+    // 判断 p q 是否在一个集合中
+    bool connected(int p, int q) {
+        return find(p) == find(q);
+    }
+};
+
+class KruskalMST {
+private:
+    queue<Edge> mst;
+    double m_weight = 0;
+    
+public:
+    KruskalMST(const EdgeWeightedGraph & G) {
+        mst = queue<Edge>{};
+        priority_queue<Edge,vector<Edge>,greater<Edge>> pq;
+        weightedQuickUnionUF UF(G.v());
+        for (Edge *e :  G.edges()) {
+            pq.push(*e);
+        }
+        
+        while (!pq.empty() && mst.size() < G.v() -  1) {
+            Edge minE = pq.top();
+            pq.pop();
+            int v = minE.either(), w = minE.other(v);
+            if (UF.connected(v, w)) continue;
+            UF.quick_union(v, w);
+            mst.push(minE);
+            m_weight += minE.weight();
+        }
+    }
+    
+    queue<Edge> edges() const {
+        return mst;
+    }
+    
+    double weight() const {
+        return m_weight;
+    };
+    
+    void print() const {
+        cout << "Kruskal mst:  " <<  endl;
+        cout <<"weight: " <<  this->weight() <<  endl;;
+        cout << "egdes: ";
+        queue<Edge> q = edges();
+        while (!q.empty()) {
+            Edge e = q.front();
+            q.pop();
+            e.print();
+        }
+        cout << endl;
+    }
+};
+
 
 void test_lazyMST() {
     ifstream fin("tinyEWG.txt");
@@ -421,8 +519,17 @@ void test_primMST() {
     prim.printMst();
 }
 
+void test_KruskalMST() {
+    ifstream fin("tinyEWG.txt");
+    EdgeWeightedGraph wdg(fin);
+    wdg.print();
+    KruskalMST kruskal(wdg);
+    kruskal.print();
+}
+
 int main(int argc, const char * argv[]) {
-    test_lazyMST();
+//    test_lazyMST();
     test_primMST();
+    test_KruskalMST();
     return 0;
 }
