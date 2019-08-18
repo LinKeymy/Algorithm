@@ -134,6 +134,16 @@ public:
         return m_count;
     }
     
+    void print() {
+        cout <<  this->count() << "  components" << endl;
+        for (int i = 0; i < this->count(); ++i) {
+            for (int w : this->cc(i)) {
+                cout << " " << w;
+            }
+            cout << endl;
+        }
+    }
+    
     vector<int> cc(int m_id) {
         vector<int> c;
         for (int i = 0,w = (*id)[i]; i < (*id).size(); ++i,w = (*id)[i]) {
@@ -273,13 +283,8 @@ void test_cc() {
     Graph finG(fin);
     Graph::printGraph(finG);
     CC cc(finG);
-    cout <<  cc.count() << "  components" << endl;
-    for (int i = 0; i < cc.count(); ++i) {
-        for (int w : cc.cc(i)) {
-            cout << " " << w;
-        }
-        cout << endl;
-    }
+    cc.print();
+
 }
 
 void test_cycle() {
@@ -298,9 +303,11 @@ void test_twoColor() {
     cout << "twoColor: " << twoColor.isTwoColor() << endl;
 }
 
+
+
 int main(int argc, const char * argv[]) {
     
-    test_twoColor();
+    test_cc();
 
     return 0;
 }
